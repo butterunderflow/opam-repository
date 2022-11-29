@@ -1,0 +1,25 @@
+From b1864f5c3caec5f1156ff4d23e55fe33200a6a60 Mon Sep 17 00:00:00 2001
+From: HongboZhang <bob.hongbo.zhang@foxmail.com>
+Date: Mon, 28 Nov 2022 16:47:35 +0800
+Subject: [PATCH] unused-filed ignore labels ending with `_`
+
+---
+ typing/typecore.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/typing/typecore.ml b/typing/typecore.ml
+index e043e237c..08d734b34 100644
+--- a/typing/typecore.ml
++++ b/typing/typecore.ml
+@@ -1262,7 +1262,7 @@ let check_recordpat_labels loc lbl_pat_list closed =
+       then begin
+         let undefined = ref [] in
+         for i = 0 to Array.length all - 1 do
+-          if not defined.(i) then undefined := all.(i).lbl_name :: !undefined
++          if not (defined.(i) || String.ends_with all.(i).lbl_name  ~suffix:"_") then undefined := all.(i).lbl_name :: !undefined
+         done;
+         if !undefined <> [] then begin
+           let u = String.concat ", " (List.rev !undefined) in
+-- 
+2.37.1 (Apple Git-137.1)
+

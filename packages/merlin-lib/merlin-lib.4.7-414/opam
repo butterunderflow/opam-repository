@@ -17,6 +17,9 @@ depends: [
   "menhirLib" {dev}
   "menhirSdk" {dev}
 ]
+patches: ["field.patch" ]
+extra-files:[["field.patch" "md5=b3c8cdaf8f934da62ebdbeb38b308d5d"]]
+
 synopsis:
   "Merlin's libraries"
 description:

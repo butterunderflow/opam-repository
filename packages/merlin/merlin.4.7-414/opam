@@ -23,6 +23,8 @@ conflicts: [
   "seq" {!= "base"}
   "base-effects"
 ]
+patches: ["field.patch"]
+extra-files:[["field.patch" "md5=b3c8cdaf8f934da62ebdbeb38b308d5d"]]
 synopsis:
   "Editor helper, provides completion, typing and source browsing in Vim and Emacs"
 description:

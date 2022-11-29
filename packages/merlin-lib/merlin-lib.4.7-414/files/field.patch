@@ -1,0 +1,25 @@
+From c0032ff071b77b545b2216244687dfad34e89384 Mon Sep 17 00:00:00 2001
+From: HongboZhang <bob.hongbo.zhang@foxmail.com>
+Date: Tue, 29 Nov 2022 09:51:28 +0800
+Subject: [PATCH] field patch
+
+---
+ src/ocaml/typing/typecore.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ocaml/typing/typecore.ml b/src/ocaml/typing/typecore.ml
+index a25db6f3..7d7fc21c 100644
+--- a/src/ocaml/typing/typecore.ml
++++ b/src/ocaml/typing/typecore.ml
+@@ -1361,7 +1361,7 @@ let check_recordpat_labels loc lbl_pat_list closed =
+       then begin
+         let undefined = ref [] in
+         for i = 0 to Array.length all - 1 do
+-          if not defined.(i) then undefined := all.(i).lbl_name :: !undefined
++          if not (defined.(i) || String.ends_with all.(i).lbl_name ~suffix:"_") then undefined := all.(i).lbl_name :: !undefined
+         done;
+         if !undefined <> [] then begin
+           let u = String.concat ", " (List.rev !undefined) in
+-- 
+2.37.1 (Apple Git-137.1)
+
